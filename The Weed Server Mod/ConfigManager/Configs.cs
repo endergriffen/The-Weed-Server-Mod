@@ -1,5 +1,4 @@
 ﻿using BepInEx.Configuration;
-using System;
 
 namespace The_Weed_Server_Mod.ConfigManager
 {
@@ -24,7 +23,8 @@ namespace The_Weed_Server_Mod.ConfigManager
         public ConfigEntry<string> ExampleStringConfig { get; private set; }
         public ConfigEntry<bool> ExampleBoolConfig { get; private set; }
 
-        public ConfigEntry<bool> BigMessageConfig { get; private set; }
+        public ConfigEntry<bool> NotificationMessageConfig { get; private set; }
+        public ConfigEntry<float> NotificationMessageTimer { get; private set; }
 
         public void Setup(ConfigFile config)
         {
@@ -33,7 +33,8 @@ namespace The_Weed_Server_Mod.ConfigManager
             ExampleStringConfig = config.Bind("String", "Example String Config", "apple", "This is simply a example of any configs that require a string.");
             ExampleBoolConfig = config.Bind("Bool", "Example Bool Config", false, "This is simply a example of any configs that require a bool.");
 
-            BigMessageConfig = config.Bind("UI", "Big Message Handler", true, "The togglable feature for 'Big Message Handler' class.");
+            NotificationMessageConfig = config.Bind("UI", "Notification Message", true, "The togglable feature for 'Notification Message' class.");
+            NotificationMessageTimer = config.Bind("UI", "Notification Message Timer", 4f, "The timer for how long the messages are on screen.");
         }
     }
 }
