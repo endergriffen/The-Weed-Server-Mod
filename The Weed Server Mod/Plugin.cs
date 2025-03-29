@@ -5,6 +5,7 @@ using The_Weed_Server_Mod.ConfigManager;
 
 namespace The_Weed_Server_Mod
 {
+    // Beep
     [BepInPlugin(modGUID, modName, modVersion)]
     public class Plugin : BaseUnityPlugin
     {
