@@ -12,6 +12,11 @@ namespace The_Weed_Server_Mod
         private const string modName = "The_Weed_Server_Mod";
         private const string modVersion = "1.0.0";
 
+        private readonly string[] contributors = 
+        { 
+            "endergriffen" 
+        };
+
         public readonly Harmony harmony = new Harmony(modGUID);
         public static Plugin Instance;
         internal ManualLogSource mls;
