@@ -30,6 +30,7 @@ namespace The_Weed_Server_Mod.ConfigManager
             ExampleIntConfig = config.Bind("Int", "Example Int Config", 0, "This is simply a example of any configs that require a int.");
             ExampleStringConfig = config.Bind("String", "Example String Config", "apple", "This is simply a example of any configs that require a string.");
             ExampleBoolConfig = config.Bind("Bool", "Example Bool Config", false, "This is simply a example of any configs that require a bool.");
+            // Smol Change
         }
     }
 }
