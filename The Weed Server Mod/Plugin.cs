@@ -2,6 +2,7 @@
 using BepInEx;
 using HarmonyLib;
 using The_Weed_Server_Mod.ConfigManager;
+using The_Weed_Server_Mod.BigMessage;
 
 namespace The_Weed_Server_Mod
 {
@@ -35,6 +36,8 @@ namespace The_Weed_Server_Mod
 
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(Configs));
+
+            harmony.PatchAll(typeof(Big_Message_Handler));
         }
     }
 }
