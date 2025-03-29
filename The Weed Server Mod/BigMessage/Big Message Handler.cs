@@ -14,6 +14,12 @@ namespace The_Weed_Server_Mod.BigMessage
         {
             if (Keyboard.current.gKey.wasPressedThisFrame)
             {
+                if (!Configs.Instance.BigMessageConfig.Value)
+                {
+                    Plugin.Instance.mls.LogInfo("'Big_Message_Handler' Class Disabled!");
+                    return;
+                }
+
                 Plugin.Instance.mls.LogInfo("Keybind 'g' pressed!");
 
                 string configValue = Configs.Instance.ExampleStringConfig.Value;
