@@ -23,7 +23,6 @@ namespace The_Weed_Server_Mod.ConfigManager
         public ConfigEntry<int> ExampleIntConfig { get; private set; }
         public ConfigEntry<string> ExampleStringConfig { get; private set; }
         public ConfigEntry<bool> ExampleBoolConfig { get; private set; }
-        public ConfigEntry<bool> penis { get; private set; }
 
         public void Setup(ConfigFile config)
         {
