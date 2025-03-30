@@ -40,7 +40,10 @@ namespace The_Weed_Server_Mod
             harmony.PatchAll(typeof(Configs));
 
             harmony.PatchAll(typeof(Notification_Message));
+
             harmony.PatchAll(typeof(Player_Tracker));
+            harmony.PatchAll(typeof(Chat_Messaging));
+            harmony.PatchAll(typeof(Cohost));
         }
     }
 }
@@ -60,4 +63,5 @@ Goals of the Mod:
 Current Features:
     Makes an in game UI messenger that displays a any message
     Makes a list to track connected players, then once players leave they will be removed from the list
+    Makes a chat messaging system that read and logs all chat messages, then if a player says the funny word in chat it will notify the host via 'Notification_Message'
 */

@@ -7,8 +7,8 @@ namespace The_Weed_Server_Mod.PlayerFolder
 {
     public class Player_Tracker
     {
-        private static List<string> onlinePlayers = new List<string>();
-        public static string message { get; set; }
+        public static List<string> onlinePlayers = new List<string>();
+        public static string NotificationMessage { get; set; }
 
         [HarmonyPatch(typeof(PlayerController), "Update")]
         [HarmonyPostfix]
@@ -21,8 +21,8 @@ namespace The_Weed_Server_Mod.PlayerFolder
                 if (!onlinePlayers.Contains(player.NickName))
                 {
                     onlinePlayers.Add(player.NickName);
-                    Plugin.Instance.mls.LogInfo($"Player: {player.NickName} was logged in and was added to the list.");
-                    message = $"{player.NickName} HAS CONNECTED";
+                    Plugin.Instance.mls.LogInfo($"Player: {player.NickName} has joined and was added to the list.");
+                    NotificationMessage = $"{player.NickName} HAS CONNECTED";
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace The_Weed_Server_Mod.PlayerFolder
             {
                 onlinePlayers.Remove(otherPlayer.NickName);
                 Plugin.Instance.mls.LogInfo($"Player: {otherPlayer.NickName} has left the room and was removed from the list.");
-                message = $"{otherPlayer.NickName} HAS DISCONNECTED";
+                NotificationMessage = $"{otherPlayer.NickName} HAS DISCONNECTED";
             }
         }
     }

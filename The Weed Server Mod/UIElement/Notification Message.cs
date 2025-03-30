@@ -17,15 +17,26 @@ namespace The_Weed_Server_Mod.UIElement
                 return;
             }
 
-            if (Player_Tracker.message != null && !string.IsNullOrEmpty(Player_Tracker.message))
+            if (Player_Tracker.NotificationMessage != null && !string.IsNullOrEmpty(Player_Tracker.NotificationMessage))
             {
                 Color textColor = new Color(0.5f, 1f, 0f);
                 Color outlineColor = Color.black;
 
-                __instance.BigMessage(Player_Tracker.message, "!", 30f, textColor, outlineColor);
+                __instance.BigMessage(Player_Tracker.NotificationMessage, "!", 30f, textColor, outlineColor);
                 Traverse.Create(__instance).Field("bigMessageTimer").SetValue(Configs.Instance.NotificationMessageTimer.Value);
 
-                Player_Tracker.message = string.Empty;
+                Player_Tracker.NotificationMessage = string.Empty;
+            }
+
+            if (Chat_Messaging.NotificationMessage != null && !string.IsNullOrEmpty(Chat_Messaging.NotificationMessage))
+            {
+                Color textColor = new Color(0.5f, 1f, 0f);
+                Color outlineColor = Color.black;
+
+                __instance.BigMessage(Chat_Messaging.NotificationMessage, "!", 30f, textColor, outlineColor);
+                Traverse.Create(__instance).Field("bigMessageTimer").SetValue(Configs.Instance.NotificationMessageTimer.Value);
+
+                Chat_Messaging.NotificationMessage = string.Empty;
             }
         }
     }
