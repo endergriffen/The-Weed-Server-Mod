@@ -30,7 +30,7 @@ namespace The_Weed_Server_Mod.UIElement
 
             if (Chat_Messaging.NotificationMessage != null && !string.IsNullOrEmpty(Chat_Messaging.NotificationMessage))
             {
-                Color textColor = new Color(0.5f, 1f, 0f);
+                Color textColor = new Color(1f, 0f, 0f);
                 Color outlineColor = Color.black;
 
                 __instance.BigMessage(Chat_Messaging.NotificationMessage, "!", 30f, textColor, outlineColor);

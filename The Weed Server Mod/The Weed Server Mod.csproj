@@ -56,6 +56,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\BepInEx-BepInExPack-5.4.2100\BepInExPack\BepInEx\core\MonoMod.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="Photon3Unity3D, Version=4.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\Photon3Unity3D.dll</HintPath>
+    </Reference>
     <Reference Include="PhotonRealtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\PhotonRealtime.dll</HintPath>
     </Reference>
@@ -90,9 +94,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LobbyScreen\Custom Screen API.cs" />
     <Compile Include="PlayerFolder\Chat Messaging.cs" />
     <Compile Include="PlayerFolder\Cohost.cs" />
     <Compile Include="PlayerFolder\Player Tracker.cs" />
+    <Compile Include="PlayerFolder\Player Update.cs" />
     <Compile Include="UIElement\Notification Message.cs" />
     <Compile Include="ConfigManager\Configs.cs" />
     <Compile Include="Plugin.cs" />

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using HarmonyLib;
+using Photon.Pun;
+using Photon.Realtime;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ExitGames.Client.Photon;
 
 namespace The_Weed_Server_Mod.PlayerFolder
 {
     public class Cohost
     {
-
+        
     }
 }

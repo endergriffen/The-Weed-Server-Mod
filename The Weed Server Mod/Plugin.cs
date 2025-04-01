@@ -1,9 +1,12 @@
 ﻿using BepInEx.Logging;
 using BepInEx;
 using HarmonyLib;
+using Photon.Pun;
 using The_Weed_Server_Mod.ConfigManager;
 using The_Weed_Server_Mod.UIElement;
 using The_Weed_Server_Mod.PlayerFolder;
+using System;
+using The_Weed_Server_Mod.LobbyScreen;
 
 namespace The_Weed_Server_Mod
 {
@@ -42,8 +45,11 @@ namespace The_Weed_Server_Mod
             harmony.PatchAll(typeof(Notification_Message));
 
             harmony.PatchAll(typeof(Player_Tracker));
+            harmony.PatchAll(typeof(Player_Update));
             harmony.PatchAll(typeof(Chat_Messaging));
             harmony.PatchAll(typeof(Cohost));
+
+            harmony.PatchAll(typeof(Custom_Screen_API));
         }
     }
 }
@@ -64,4 +70,5 @@ Current Features:
     Makes an in game UI messenger that displays a any message
     Makes a list to track connected players, then once players leave they will be removed from the list
     Makes a chat messaging system that read and logs all chat messages, then if a player says the funny word in chat it will notify the host via 'Notification_Message'
+    A custom screen API that allows for the creation of custom screens, like the display command that will display a message on the screen
 */
