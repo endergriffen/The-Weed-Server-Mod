@@ -6,7 +6,10 @@ using The_Weed_Server_Mod.ConfigManager;
 using The_Weed_Server_Mod.UIElement;
 using The_Weed_Server_Mod.PlayerFolder;
 using System;
-using The_Weed_Server_Mod.LobbyScreen;
+using The_Weed_Server_Mod.SpectateFolder;
+using UnityEngine;
+using The_Weed_Server_Mod.TruckScreen;
+using The_Weed_Server_Mod.ChatMessaging;
 
 namespace The_Weed_Server_Mod
 {
@@ -46,10 +49,17 @@ namespace The_Weed_Server_Mod
 
             harmony.PatchAll(typeof(Player_Tracker));
             harmony.PatchAll(typeof(Player_Update));
-            harmony.PatchAll(typeof(Chat_Messaging));
-            harmony.PatchAll(typeof(Cohost));
 
-            harmony.PatchAll(typeof(Custom_Screen_API));
+            harmony.PatchAll(typeof(PlayerDeathHeadPatch));
+            harmony.PatchAll(typeof(SpectateCameraPatch));
+            // harmony.PatchAll(typeof(DuckSpectateController));
+
+            harmony.PatchAll(typeof(Track_Chat_Messages));
+            harmony.PatchAll(typeof(Host_Commands));
+
+            harmony.PatchAll(typeof(Display_Display_Command));
+            harmony.PatchAll(typeof(Display_Poll_Command));
+            harmony.PatchAll(typeof(Display_Level_Command));
         }
     }
 }

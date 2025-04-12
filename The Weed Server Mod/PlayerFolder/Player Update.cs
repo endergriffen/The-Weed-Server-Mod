@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using The_Weed_Server_Mod.LobbyScreen;
 using UnityEngine.InputSystem;
 
 namespace The_Weed_Server_Mod.PlayerFolder
@@ -10,7 +9,7 @@ namespace The_Weed_Server_Mod.PlayerFolder
         [HarmonyPostfix]
         public static void UpdateCycle(PlayerController __instance)
         {
-            if (Keyboard.current.oKey.wasPressedThisFrame)
+            if (Keyboard.current.pKey.wasPressedThisFrame)
             {
                 Plugin.Instance.mls.LogInfo("'P' Keybind has been pressed!");
             }

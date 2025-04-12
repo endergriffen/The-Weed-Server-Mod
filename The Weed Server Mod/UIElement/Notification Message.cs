@@ -28,6 +28,7 @@ namespace The_Weed_Server_Mod.UIElement
                 Player_Tracker.NotificationMessage = string.Empty;
             }
 
+            /*
             if (Chat_Messaging.NotificationMessage != null && !string.IsNullOrEmpty(Chat_Messaging.NotificationMessage))
             {
                 Color textColor = new Color(1f, 0f, 0f);
@@ -38,6 +39,7 @@ namespace The_Weed_Server_Mod.UIElement
 
                 Chat_Messaging.NotificationMessage = string.Empty;
             }
+            */
         }
     }
 }

@@ -26,6 +26,9 @@ namespace The_Weed_Server_Mod.ConfigManager
         public ConfigEntry<bool> NotificationMessageConfig { get; private set; }
         public ConfigEntry<float> NotificationMessageTimer { get; private set; }
 
+        public ConfigEntry<float> TruckScreenMessageConfig { get; private set; }
+        public ConfigEntry<string> TruckScreenFullMessageConfig { get; private set; }
+
         public void Setup(ConfigFile config)
         {
             ExampleFloatConfig = config.Bind("Float", "Example Float Config", 0f, "This is simply a example of any configs that require a float.");
@@ -35,6 +38,9 @@ namespace The_Weed_Server_Mod.ConfigManager
 
             NotificationMessageConfig = config.Bind("UI", "Notification Message", true, "The togglable feature for 'Notification Message' class.");
             NotificationMessageTimer = config.Bind("UI", "Notification Message Timer", 4f, "The timer for how long the messages are on screen.");
+
+            TruckScreenMessageConfig = config.Bind("TruckScreen", "Truck Screen Message", 1f, ".");
+            TruckScreenFullMessageConfig = config.Bind("TruckScreen", "Truck Screen String Message", "e", ".");
         }
     }
 }
