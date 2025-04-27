@@ -46,6 +46,7 @@ namespace The_Weed_Server_Mod
             harmony.PatchAll(typeof(Configs));
 
             harmony.PatchAll(typeof(Notification_Message));
+            harmony.PatchAll(typeof(New_Test_Button));
 
             harmony.PatchAll(typeof(Player_Tracker));
             harmony.PatchAll(typeof(Player_Update));

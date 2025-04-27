@@ -29,6 +29,10 @@ namespace The_Weed_Server_Mod.ConfigManager
         public ConfigEntry<float> TruckScreenMessageConfig { get; private set; }
         public ConfigEntry<string> TruckScreenFullMessageConfig { get; private set; }
 
+        public ConfigEntry<float> ButtonXPosition { get; private set; }
+        public ConfigEntry<float> ButtonYPosition { get; private set; }
+        public ConfigEntry<bool> UseAbsolutePosition { get; private set; }
+
         public void Setup(ConfigFile config)
         {
             ExampleFloatConfig = config.Bind("Float", "Example Float Config", 0f, "This is simply a example of any configs that require a float.");
@@ -41,6 +45,10 @@ namespace The_Weed_Server_Mod.ConfigManager
 
             TruckScreenMessageConfig = config.Bind("TruckScreen", "Truck Screen Message", 1f, ".");
             TruckScreenFullMessageConfig = config.Bind("TruckScreen", "Truck Screen String Message", "e", ".");
+
+            ButtonXPosition = config.Bind("UI Button", "Button X Position", 455f, ".");
+            ButtonYPosition = config.Bind("UI Button", "Button Y Position", 340f, ".");
+            UseAbsolutePosition = config.Bind("UI Button", "Use Absolute Position", true, ".");
         }
     }
 }

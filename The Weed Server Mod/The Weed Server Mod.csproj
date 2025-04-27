@@ -105,6 +105,7 @@
     <Compile Include="TruckScreen\Display Display Command.cs" />
     <Compile Include="TruckScreen\Display Level Command.cs" />
     <Compile Include="TruckScreen\Display Poll Command.cs" />
+    <Compile Include="UIElement\New Test Button.cs" />
     <Compile Include="UIElement\Notification Message.cs" />
     <Compile Include="ConfigManager\Configs.cs" />
     <Compile Include="Plugin.cs" />
