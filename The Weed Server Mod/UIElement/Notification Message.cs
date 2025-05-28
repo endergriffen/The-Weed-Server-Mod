@@ -8,6 +8,13 @@ namespace The_Weed_Server_Mod.UIElement
     [HarmonyPatch(typeof(BigMessageUI), "Update")]
     public class Notification_Message
     {
+        public enum MessageType
+        {
+            Notification,
+            Warning,
+            Alert
+        }
+
         [HarmonyPostfix]
         public static void ShowMessage(BigMessageUI __instance)
         {
@@ -17,29 +24,33 @@ namespace The_Weed_Server_Mod.UIElement
                 return;
             }
 
-            if (Player_Tracker.NotificationMessage != null && !string.IsNullOrEmpty(Player_Tracker.NotificationMessage))
+            var msg = Connected_Players.NotificationMessage;
+            if (msg != null && !string.IsNullOrEmpty(msg.Message))
             {
-                Color textColor = new Color(0.5f, 1f, 0f);
+                Color textColor;
                 Color outlineColor = Color.black;
 
-                __instance.BigMessage(Player_Tracker.NotificationMessage, "!", 30f, textColor, outlineColor);
+                switch (msg.Type)
+                {
+                    case MessageType.Notification:
+                        textColor = new Color(0.5f, 1f, 0f);
+                        break;
+                    case MessageType.Warning:
+                        textColor = new Color(1f, 0.65f, 0f);
+                        break;
+                    case MessageType.Alert:
+                        textColor = Color.red;
+                        break;
+                    default:
+                        textColor = Color.blue;
+                        break;
+                }
+
+                __instance.BigMessage(msg.Message, "!", 30f, textColor, outlineColor);
                 Traverse.Create(__instance).Field("bigMessageTimer").SetValue(Configs.Instance.NotificationMessageTimer.Value);
 
-                Player_Tracker.NotificationMessage = string.Empty;
+                Connected_Players.NotificationMessage = null;
             }
-
-            /*
-            if (Chat_Messaging.NotificationMessage != null && !string.IsNullOrEmpty(Chat_Messaging.NotificationMessage))
-            {
-                Color textColor = new Color(1f, 0f, 0f);
-                Color outlineColor = Color.black;
-
-                __instance.BigMessage(Chat_Messaging.NotificationMessage, "!", 30f, textColor, outlineColor);
-                Traverse.Create(__instance).Field("bigMessageTimer").SetValue(Configs.Instance.NotificationMessageTimer.Value);
-
-                Chat_Messaging.NotificationMessage = string.Empty;
-            }
-            */
         }
     }
 }

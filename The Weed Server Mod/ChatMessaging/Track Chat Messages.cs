@@ -11,7 +11,7 @@ namespace The_Weed_Server_Mod.ChatMessaging
 
         public static List<string> HostCommandList = new List<string>
         {
-            "/display", "/poll", "/level"
+            "/display", "/poll", "/level", "/vote", "/endpoll", "/endlevel", "/results"
         };
 
         [HarmonyPatch(typeof(PlayerAvatar), nameof(PlayerAvatar.ChatMessageSendRPC))]

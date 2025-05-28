@@ -88,28 +88,49 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\REPO\REPO_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatMessaging\Host Commands.cs" />
     <Compile Include="ChatMessaging\Track Chat Messages.cs" />
     <Compile Include="LobbyScreen\Display Command.cs" />
-    <Compile Include="PlayerFolder\Player Tracker.cs" />
-    <Compile Include="PlayerFolder\Player Update.cs" />
+    <Compile Include="PlayerFolder\Connected Players.cs" />
+    <Compile Include="PlayerFolder\Death and Revive Detection.cs" />
+    <Compile Include="PlayerFolder\Inventory Detection.cs" />
+    <Compile Include="PlayerFolder\Keybind Detection.cs" />
+    <Compile Include="PlayerFolder\Ping Detection.cs" />
+    <Compile Include="PlayerFolder\Player Statistics.cs" />
+    <Compile Include="PlayerFolder\Tumble Detection.cs" />
+    <Compile Include="PlayerFolder\Upgrade Detection.cs" />
     <Compile Include="SpectateFolder\DuckSpectateController.cs" />
     <Compile Include="SpectateFolder\PlayerDeathHeadPatch.cs" />
     <Compile Include="SpectateFolder\SpectateCameraPatch.cs" />
     <Compile Include="TruckScreen\Display Display Command.cs" />
     <Compile Include="TruckScreen\Display Level Command.cs" />
     <Compile Include="TruckScreen\Display Poll Command.cs" />
-    <Compile Include="UIElement\New Test Button.cs" />
+    <Compile Include="TruckScreen\Poll State Manager.cs" />
+    <Compile Include="UIElement\MenuPageEscPatch.cs" />
     <Compile Include="UIElement\Notification Message.cs" />
     <Compile Include="ConfigManager\Configs.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIElement\UI Base.cs" />
+    <Compile Include="UIElement\UI_Setup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

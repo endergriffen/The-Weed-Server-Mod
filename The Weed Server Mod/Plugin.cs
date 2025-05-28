@@ -1,15 +1,14 @@
 ﻿using BepInEx.Logging;
 using BepInEx;
 using HarmonyLib;
-using Photon.Pun;
 using The_Weed_Server_Mod.ConfigManager;
 using The_Weed_Server_Mod.UIElement;
 using The_Weed_Server_Mod.PlayerFolder;
 using System;
-using The_Weed_Server_Mod.SpectateFolder;
 using UnityEngine;
 using The_Weed_Server_Mod.TruckScreen;
 using The_Weed_Server_Mod.ChatMessaging;
+using System.Collections.Generic;
 
 namespace The_Weed_Server_Mod
 {
@@ -26,9 +25,39 @@ namespace The_Weed_Server_Mod
             ""
         };
 
+        private static readonly List<Type> patchClasses = new List<Type>
+        {
+            typeof(Plugin),
+            typeof(Configs),
+
+            typeof(PlayerData),
+            typeof(Player_Statistics),
+            typeof(Connected_Players),
+            typeof(Keybind_Detection),
+            typeof(Death_and_Revive_Detection),
+            typeof(Inventory_Detection),
+            typeof(Ping_Detection),
+            typeof(Tumble_Detection),
+            typeof(Upgrade_Detection),
+
+            typeof(Host_Commands),
+            typeof(Track_Chat_Messages),
+
+            typeof(Poll_State_Manager),
+            typeof(Display_Display_Command),
+            typeof(Display_Level_Command),
+            typeof(Display_Poll_Command),
+
+            typeof(Notification_Message),
+            typeof(UI_Setup),
+            typeof(UI_Base)
+        };
+
         public readonly Harmony harmony = new Harmony(modGUID);
         public static Plugin Instance;
         internal ManualLogSource mls;
+
+        internal UI_Base Menu;
 
         void Awake()
         {
@@ -37,30 +66,46 @@ namespace The_Weed_Server_Mod
                 Instance = this;
             }
 
+            UI_Base.menuRect = new Rect(UI_Base.MENUX, UI_Base.MENUY, UI_Base.MENUWIDTH, UI_Base.MENUHEIGHT);
+
             mls = BepInEx.Logging.Logger.CreateLogSource("TWSM");
             mls.LogInfo("The Weed Server Mod for REPO is alive!");
 
             Configs.Instance.Setup(Config);
 
-            harmony.PatchAll(typeof(Plugin));
-            harmony.PatchAll(typeof(Configs));
+            foreach (var patchClass in patchClasses)
+            {
+                try
+                {
+                    harmony.PatchAll(patchClass);
+                    mls.LogInfo($"Successfully patched: {patchClass.Name}");
+                }
+                catch (Exception ex)
+                {
+                    mls.LogError($"Failed to patch: {patchClass.Name} - {ex.Message}");
+                }
+            }
 
-            harmony.PatchAll(typeof(Notification_Message));
-            harmony.PatchAll(typeof(New_Test_Button));
+            CreateMenu();
 
-            harmony.PatchAll(typeof(Player_Tracker));
-            harmony.PatchAll(typeof(Player_Update));
+            CreateInputListener();
+        }
 
-            harmony.PatchAll(typeof(PlayerDeathHeadPatch));
-            harmony.PatchAll(typeof(SpectateCameraPatch));
-            // harmony.PatchAll(typeof(DuckSpectateController));
+        public void CreateMenu()
+        {
+            var gameObject = new UnityEngine.GameObject("UI_Base");
+            UnityEngine.Object.DontDestroyOnLoad(gameObject);
+            gameObject.hideFlags = HideFlags.HideAndDontSave;
+            gameObject.AddComponent<UI_Base>();
+            Menu = gameObject.AddComponent<UI_Base>();
+        }
 
-            harmony.PatchAll(typeof(Track_Chat_Messages));
-            harmony.PatchAll(typeof(Host_Commands));
-
-            harmony.PatchAll(typeof(Display_Display_Command));
-            harmony.PatchAll(typeof(Display_Poll_Command));
-            harmony.PatchAll(typeof(Display_Level_Command));
+        private void CreateInputListener()
+        {
+            var inputListenerObject = new GameObject("UI_InputListener");
+            UnityEngine.Object.DontDestroyOnLoad(inputListenerObject);
+            inputListenerObject.hideFlags = HideFlags.HideAndDontSave;
+            inputListenerObject.AddComponent<UI_Setup>();
         }
     }
 }
